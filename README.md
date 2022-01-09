@@ -23,3 +23,43 @@
 |动态规划| |
 |贪心算法| |
 |回溯算法| |
+# 数据结构用法
+
+###  栈
+> 后进先出 使用js中的` push() `和` pop() `
+
+有效的括号(LeetCode.20)  
+扫描字符串，遇到左括号入栈，遇到栈顶括号类型匹配的右括号接出栈，类型不匹配直接判定为不合法。  
+最后栈空了就合法，否则不合法。  
+
+### 队列
+> 先进先出 使用js中的` push() `和` shift() `
+
+应用场景: 食堂排队打饭、js异步的任务队列  
+最近请求次数(LeetCode.933) 
+
+### 链表
+```javascript
+const a= { val: 'a' };
+const b= { val: 'b' };
+const c= { val: 'c' };
+const d= { val: 'd' };
+a.next = b;
+b.next = c;
+c.next = d;
+
+//遍历链表  
+let p = a;
+while (p){
+  console.log(p.val)
+  p = p.next;
+}
+
+//插入
+const e = { val: 'e' };
+c.next = e;
+e.next = d;
+
+//删除
+c.next = d;
+```
