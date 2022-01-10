@@ -99,13 +99,11 @@ m.get('a');//'aa'
 用字典建立一个映射关系，记录nums1里所有值,遍历nums2,找出nums1里也有的值  
 遇到字典里的值就选出来并充字典中删除
 ### 树
-深度优先遍历  
+深度优先遍历
+<img src="./images/guang.png"  width="150px"/>
+广度优先遍历
+<img src="./images/sheng.png"  width="150px"/>  
 
-<img src="./images/guang.png"  width="150px"/>  
-
-广度优先遍历  
-
-<img src="./images/sheng.png"  width="150px"/>
 ```javascript
 const tree = {
   val: 'a',
@@ -155,5 +153,68 @@ const bfs = (root) => {
       q.push(child);
     })
   }
+}
+```
+### 二叉树
+
+先序遍历
+<img src="./images/xian.png"  width="150px"/>
+中序遍历
+<img src="./images/zhong.png"  width="150px"/>
+后序遍历
+<img src="./images/hou.png"  width="150px"/>  
+```javascript
+const bt = {
+  val: 1,
+  left: {
+    val: 2,
+    left: {
+      val: 4,
+      left: null,
+      right: null,
+    },
+    right: {
+      val: 5,
+      left: null,
+      right: null,
+    }
+  },
+  right: {
+    val: 3,
+    left: {
+      val: 6,
+      left: null,
+      right: null,
+    },
+    right: {
+      val: 7,
+      left: null,
+      right: null,
+    }
+  }
+}
+
+//先序遍历
+const preorder = (root) => {
+  if(!root){return;}
+  console.log(root.val);
+  preorder(root.left);
+  preorder(root.right);
+}
+
+//中序遍历
+const inorder = (root) => {
+  if(!root){return;}
+  inorder(root.left);
+  console.log(root.val);
+  inorder(root.right);
+}
+
+//后序遍历
+const postorder = (root) =>{
+  if(!root){return;}
+  inorder(root.left);
+  inorder(root.right);
+  console.log(root.val);
 }
 ```
