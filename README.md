@@ -63,3 +63,97 @@ e.next = d;
 //删除
 c.next = d;
 ```
+### 集合
+```javascript
+//去重
+const arr = [1,1,2,2];
+const arr2 = [...new Set(arr)];
+
+//判定元素是否在集合中
+const set = new Set(arr);
+const has = set.has(3);
+
+//求交集
+const set2 = new Set([2,3]);
+const set3 = new Set([...set].filter(item => set2.has(item)));
+```
+### 字典
+```javascript
+const m = new Map();
+//增
+m.set('a','aa');
+m.set('b','bb');
+
+//删
+m.delete('b');//删除一个
+m.clear();//删除所有的
+
+//改
+m.set('a','aaa');//直接覆盖即可
+
+//查
+m.get('a');//'aa'
+```  
+  
+两个数组`nums1和nums2`的交集  
+用字典建立一个映射关系，记录nums1里所有值,遍历nums2,找出nums1里也有的值  
+遇到字典里的值就选出来并充字典中删除
+### 树
+深度优先遍历  
+
+<img src="./images/guang.png"  width="150px"/>  
+
+广度优先遍历  
+
+<img src="./images/sheng.png"  width="150px"/>
+```javascript
+const tree = {
+  val: 'a',
+  children: [
+    {
+      val: 'b',
+      children: [
+        {
+          val: 'd',
+          children: [],
+        },
+        {
+          val: 'e',
+          children: [],
+        },      
+      ]
+    },
+    {
+      val: 'c',
+      children: [
+        {
+          val: 'f',
+          children: [],
+        },
+        {
+          val: 'g',
+          children: [],
+        },       
+      ]
+    },   
+  ]
+}
+
+//深度优先遍历
+const dfs = (root) => {
+  console.log(root.val);
+  root.children.forEach(dfs);
+}
+
+//广度优先遍历
+const bfs = (root) => {
+  const q = [root];
+  while (q.length>0){
+    const n = q.shift();
+    console.log(n.val);
+    n.children.forEach(child =>{
+      q.push(child);
+    })
+  }
+}
+```
