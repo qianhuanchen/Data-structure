@@ -154,6 +154,16 @@ const bfs = (root) => {
     })
   }
 }
+//二叉树广度优先遍历
+const bfs = (root) => {
+    const q = [root];
+    while (q.lenght > 0) {
+       const n = q.shift()
+       consol.log(n.val);
+       if(n.left) q.push(n.left);
+       if(n.right) q.push(n.right);
+    }
+};
 ```
 ### 二叉树
 
