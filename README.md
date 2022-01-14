@@ -271,3 +271,41 @@ const postorder1 = (root) =>{
   }
 }
 ```
+
+### 图
+```javascript
+const graph={
+  0: [1,2],
+  1: [2],
+  2: [0,3],
+  3: [3]
+};
+//图的深度优先遍历
+const visited = new Set();
+const dfs = (n) => {
+  console.log(n);
+  visited.add(n);
+  graph[n].forEach(c=>{
+    if(!visited.has(c)){
+      dfs(c);
+    } 
+  });
+  
+}
+//图的深度优先遍历
+const bfs=(root)=>{
+  const visited = new Set();
+  visited.add(root);
+  const q = [root];
+  while (q.length) {
+    const n = q.shift();
+    console.log(n);
+    graph[n].forEach(c => {
+      if (!visited.has(c)) {
+        q.push(c);
+        visited.add(n);
+      }
+    });
+  }
+}
+```
