@@ -313,5 +313,77 @@ const bfs=(root)=>{
 堆是一个完全二叉树(有完整的左右节点，或者只缺少右边的若干节点)，js通常使用数组来表示堆  
 <img src="./images/dv.png"  width="150px"/>  
 >  左侧子节点位置是 2 x index + 1  
->  右侧子节点的位置是2 x index + 2
+>  右侧子节点的位置是 2 x index + 2  
+>  父节点位置 (index-1)/2  
+```javascript
+//最小堆类
+class MinHeap {
+  constructor() {
+    this.heap = [];
+  }
+
+  swap(i1, i2) {
+    let temp = this.heap[i1];
+    this.heap[i1] = this.heap[i2];
+    this.heap[i2] = temp;
+  }
+
+  getParentIndex(index) {//获取父节点
+    return ((index - 1) >> 1)
+    //Math.floor((index-1)/2)
+  }
+
+  getLeftIndex(index) {//获取父节点
+    return index * 2 + 1;
+    //Math.floor((index-1)/2)
+  }
+
+  getRightIndex(index) {//获取父节点
+    return index * 2 + 2;
+    //Math.floor((index-1)/2)
+  }
+
+  shiftUp(index) {
+    if (index === 0) return;
+
+    let parentIndex = this.getParentIndex(index);
+    if (this.heap[parentIndex] > this.heap[index]) {
+
+      this.swap(parentIndex, index);
+      this.shiftUp(parentIndex);
+    }
+  }
+
+  insert(value) {
+    this.heap.push(value);
+    this.shiftUp(this.heap.length - 1);
+
+  }
+
+  shiftDown(index) {
+    const indexLeft=this.getLeftIndex(index);
+    const indexRight=this.getRightIndex(index);
+    if(this.heap[indexLeft]<this.heap[index]){
+      this.swap(indexLeft,index);
+      this.shiftDown(indexLeft);
+    }
+    if(this.heap[indexRight]<this.heap[index]){
+      this.swap(indexRight,index);
+      this.shiftDown(indexRight);
+    }
+  }
+
+  pop() {
+    this.heap[0] = this.heap.pop();
+    this.shiftDown(0)
+  }
+  head(){
+    return this.heap[0];
+  }
+  size(){
+    return this.heap.length;
+  }
+}
+```
+
 
