@@ -387,5 +387,38 @@ class MinHeap {
 ```
 ### 排序和搜索
 排序使用 `sort` 方法 搜索使用 `indexOf` 方法
+```javascipt
+//冒泡排序 x
+Array.prototype.bubbleSort = function () {
+  for (let i = 0; i < this.length - 1; i++) {
+    for (let j = 0; j < this.length - 1 - i; j++) {
+      if (this[j] > this[j + 1]) {
+        const temp = this[j];
+        this[j] = this[j + 1];
+        this[j + 1] = temp;
+      }
+    }
+  }
+}
+const arr=[1,23,54,2,4];
 
+//选择排序 x
+Array.prototype.selectionSort = function () {
+  for (let i = 0; i < this.length - 1; i++) {
+    let indexMin = i;
+    for (let j = i; j < this.length; j++) {
+      if (this[j] < this[indexMin]) {
+        indexMin = j;
+      }
+    }
+    if(indexMin !== i){
+      let temp = this[i];
+      this[i] = this[indexMin];
+      this[indexMin] = temp;
+    }
+  }
+}
+const arr = [5, 4, 3, 2, 1];
+arr.selectionSort();
+```
 
