@@ -387,7 +387,7 @@ class MinHeap {
 ```
 ### 排序和搜索
 排序使用 `sort` 方法 搜索使用 `indexOf` 方法
-
+#### 排序
 ```javascript
 const arr=[5,4,3,2,1];
 
@@ -419,5 +419,99 @@ Array.prototype.selectionSort = function () {
       this[indexMin] = temp;
     }
   }
+}
+
+//插入排序 x
+Array.prototype.insertionSort = function () {
+  for(let i=1;i<this.length;i++){
+    const temp = this[i];
+    let j = i;
+    while (j > 0) {
+      if (this[j - 1] > temp) {
+        this[j] = this[j - 1];
+      } else {
+        break;
+      }
+      j--;
+    }
+    this[j] = temp;
+  }
+}
+
+//归并排序
+Array.prototype.mergeSort = function () {
+  const rec = (arr) => {
+    if (arr.length === 1) return arr;
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid, arr.length);
+    const orderLeft = rec(left);
+    const orderRight = rec(right);
+    const res = [];
+    while (orderLeft.length || orderRight.length) {
+      if (orderRight.length && orderLeft) {
+        res.push(orderLeft[0] < orderRight[0] ? orderLeft.shift() : orderRight.shift())
+      } else if (orderLeft.length) {
+        res.push(orderLeft.shift())
+      } else if (orderRight.length) {
+        res.push(orderRight.shift())
+      }
+    }
+    return res;
+  }
+  const res = rec(this)
+  res.forEach((n, i) => this[i] = n)
+}
+
+//快速排序
+Array.prototype.quickSort = function () {
+  const rec = (arr) => {
+    if (arr.length === 1) {
+      return arr;
+    }
+    const left = [];
+    const right = [];
+    const mid = arr[0];
+    for (let i = 1; i < this.length; i++) {
+      if (arr[i] < mid) {
+        left.push(arr[i]);
+      } else {
+        right.push(arr[i]);
+      }
+    }
+    return [...rec(left), mid, ...rec(right)]
+
+  }
+  const res = rec(this);
+  res.forEach((n, i) => this[i] = n);
+}
+```
+#### 搜索
+```javascript
+//顺序搜索
+Array.prototype.sequentialSearch=function(item){
+  for (let i=0;i<this.length;i++){
+    if(this[i]===item){
+      return i;
+    }
+  }
+  return -1;
+}
+//二分搜索 数据必须是有序列表
+Array.prototype.binarySearch = function (item) {
+  let low = 0;
+  let high = this.length - 1;
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+    const element = this[mid]
+    if (element < item) {
+      low = mid + 1
+    } else if (element > item) {
+      high = mid - 1
+    }else{
+      return mid;
+    }
+  }
+  return -1;
 }
 ```
