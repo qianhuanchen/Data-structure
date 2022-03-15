@@ -292,7 +292,7 @@ const dfs = (n) => {
   });
   
 }
-//图的深度优先遍历
+//图的广度优先遍历
 const bfs=(root)=>{
   const visited = new Set();
   visited.add(root);
