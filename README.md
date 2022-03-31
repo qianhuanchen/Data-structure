@@ -99,9 +99,9 @@ m.get('a');//'aa'
 用字典建立一个映射关系，记录nums1里所有值,遍历nums2,找出nums1里也有的值  
 遇到字典里的值就选出来并充字典中删除
 ### 树
-深度优先遍历
-<img src="./images/guang.png"  width="150px"/>
 广度优先遍历
+<img src="./images/guang.png"  width="150px"/>
+深度优先遍历
 <img src="./images/sheng.png"  width="150px"/>  
 
 ```javascript
